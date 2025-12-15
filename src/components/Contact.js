@@ -22,22 +22,54 @@ export default function Contact() {
     location: "",
     coverLetter: "",
   });
+  const [resumeFile, setResumeFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
     if (activeForm === "business") {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
+      setFormData({ ...formData, [e.target.name]: e.target.value });
     } else {
-      setCareerData({
-        ...careerData,
-        [e.target.name]: e.target.value,
-      });
+      setCareerData({ ...careerData, [e.target.name]: e.target.value });
     }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Validate file
+      const validTypes = [
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ];
+      const maxSize = 5 * 1024 * 1024; // 5MB
+
+      if (!validTypes.includes(file.type)) {
+        setError("Please upload a PDF or Word document");
+        e.target.value = "";
+        return;
+      }
+
+      if (file.size > maxSize) {
+        setError("File size must be less than 5MB");
+        e.target.value = "";
+        return;
+      }
+
+      setResumeFile(file);
+      setError("");
+    }
+  };
+
+  const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(",")[1]); // Get base64 part only
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -46,33 +78,56 @@ export default function Contact() {
     setError("");
     setSuccess(false);
 
-    const dataToSend =
-      activeForm === "business"
-        ? formData
-        : {
-            name: careerData.name,
-            email: careerData.email,
-            phone: careerData.phone,
-            company: `Career Application - ${careerData.position}`,
-            service: "Career Opportunity",
-            message: `Position: ${careerData.position}\nExperience: ${careerData.experience} years\nLocation: ${careerData.location}\n\nCover Letter:\n${careerData.coverLetter}`,
-          };
-
-    // Validation
-    if (!dataToSend.name || !dataToSend.email || !dataToSend.message) {
-      setError("Please fill in all required fields");
-      setLoading(false);
-      return;
-    }
-
     try {
+      let dataToSend;
+
+      if (activeForm === "business") {
+        if (!formData.name || !formData.email || !formData.message) {
+          setError("Please fill in all required fields");
+          setLoading(false);
+          return;
+        }
+        dataToSend = formData;
+      } else {
+        // Career form
+        if (
+          !careerData.name ||
+          !careerData.email ||
+          !careerData.phone ||
+          !careerData.position ||
+          !careerData.coverLetter
+        ) {
+          setError("Please fill in all required fields");
+          setLoading(false);
+          return;
+        }
+
+        // Convert resume to base64 if uploaded
+        let resumeFileBase64 = null;
+        let resumeFileName = null;
+
+        if (resumeFile) {
+          resumeFileBase64 = await fileToBase64(resumeFile);
+          resumeFileName = resumeFile.name;
+        }
+
+        dataToSend = {
+          name: careerData.name,
+          email: careerData.email,
+          phone: careerData.phone,
+          company: `Career Application - ${careerData.position}`,
+          service: "Career Opportunity",
+          message: `Position: ${careerData.position}\nExperience: ${careerData.experience} years\nLocation: ${careerData.location}\n\nCover Letter:\n${careerData.coverLetter}`,
+          resumeFile: resumeFileBase64,
+          resumeFileName: resumeFileName,
+        };
+      }
+
       const response = await fetch(
         "https://mhic0dglu6.execute-api.us-east-1.amazonaws.com/dev/contact",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(dataToSend),
         }
       );
@@ -103,12 +158,13 @@ export default function Contact() {
             location: "",
             coverLetter: "",
           });
+          setResumeFile(null);
+          // Clear file input
+          const fileInput = document.querySelector('input[type="file"]');
+          if (fileInput) fileInput.value = "";
         }
 
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-          setSuccess(false);
-        }, 5000);
+        setTimeout(() => setSuccess(false), 5000);
       } else {
         setError(data.error || "Something went wrong. Please try again.");
       }
@@ -161,7 +217,6 @@ export default function Contact() {
         </div>
 
         <div className="work-form">
-          {/* Success Message */}
           {success && (
             <div
               style={{
@@ -171,15 +226,14 @@ export default function Contact() {
                 borderRadius: "5px",
                 marginBottom: "20px",
                 textAlign: "center",
-                animation: "slideIn 0.3s ease-out",
               }}
             >
-              ✅ Thank you! Your message has been sent. We'll get back to you
-              within 24 hours.
+              ✅ Thank you! Your{" "}
+              {activeForm === "business" ? "message" : "application"} has been
+              sent. We'll get back to you within 24 hours.
             </div>
           )}
 
-          {/* Error Message */}
           {error && (
             <div
               style={{
@@ -189,7 +243,6 @@ export default function Contact() {
                 borderRadius: "5px",
                 marginBottom: "20px",
                 textAlign: "center",
-                animation: "slideIn 0.3s ease-out",
               }}
             >
               ❌ {error}
@@ -428,9 +481,20 @@ export default function Contact() {
               </div>
               <div className="form-row">
                 <div className="form-group full-width">
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "5px",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Upload Resume (PDF or Word, max 5MB){" "}
+                    {resumeFile && `✓ ${resumeFile.name}`}
+                  </label>
                   <input
                     type="file"
                     accept=".pdf,.doc,.docx"
+                    onChange={handleFileChange}
                     disabled={loading}
                   />
                 </div>
