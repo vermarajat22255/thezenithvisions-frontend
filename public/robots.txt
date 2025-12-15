@@ -1,0 +1,6 @@
+# Robots.txt for TheZenithVisions
+User-agent: *
+Allow: /
+Sitemap: https://thezenithvisions.com/sitemap.xml
+Disallow: /admin/
+Disallow: /private/
