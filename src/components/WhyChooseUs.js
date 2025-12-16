@@ -5,7 +5,7 @@ export default function WhyChooseUs() {
     <section id="trust" className="trust">
       <div className="trust-hero-header">
         <div className="trust-centered-container">
-          <div className="trust-tag-center">TRUST</div>
+          <div className="trust-tag-center">Building Relationships</div>
           <h2 className="trust-main-title">TRUST</h2>
           <p className="trust-main-description">
             At Zenith Visions, we combine precision, innovation, and experience
