@@ -27,6 +27,12 @@ export default function Contact() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
+  const trackEvent = (eventName, eventParams) => {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", eventName, eventParams);
+    }
+  };
+
   const handleChange = (e) => {
     if (activeForm === "business") {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -136,6 +142,16 @@ export default function Contact() {
 
       if (response.ok) {
         setSuccess(true);
+
+        // Track successful form submission for google analytics
+        trackEvent("form_submission", {
+          form_type:
+            activeForm === "business"
+              ? "Business Inquiry"
+              : "Career Application",
+          service:
+            activeForm === "business" ? formData.service : careerData.position,
+        });
 
         // Clear form
         if (activeForm === "business") {
