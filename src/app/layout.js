@@ -113,6 +113,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning={true}>
+        <a href="#main-content" className="skip-to-main">
+          Skip to main content
+        </a>
         {children}
 
         {/* Scroll to Top Button */}

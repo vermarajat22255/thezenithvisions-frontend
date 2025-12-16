@@ -3764,3 +3764,204 @@ video,
 .submit-btn:disabled:hover {
     transform: none;
 }
+
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   Add these to the END of your globals.css
+   ======================================== */
+
+
+/* Visually hidden labels (for screen readers only) */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+
+/* Minimum touch target size for mobile accessibility */
+
+@media (max-width: 768px) {
+    button,
+    .work-cta,
+    .submit-btn,
+    input[type="submit"],
+    input[type="button"],
+    a {
+        min-height: 48px;
+        min-width: 48px;
+        padding: 12px 20px;
+    }
+    /* Ensure proper spacing between touch targets */
+    .work-cta-buttons button {
+        margin: 5px;
+    }
+}
+
+
+/* Focus visible for keyboard navigation - WCAG 2.4.7 */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+
+/* Remove default outline but keep focus-visible */
+
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+
+/* High contrast focus for better visibility */
+
+@media (prefers-contrast: high) {
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    a:focus-visible {
+        outline: 4px solid #000;
+        outline-offset: 3px;
+    }
+}
+
+
+/* Skip to main content link (for keyboard users) */
+
+.skip-to-main {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-to-main:focus {
+    top: 0;
+}
+
+
+/* Improve color contrast for better readability - WCAG 2.1 AA */
+
+
+/* Update any low-contrast text colors */
+
+.low-contrast-text {
+    color: #666666;
+    /* Minimum 4.5:1 contrast ratio on white */
+}
+
+
+/* Ensure links have sufficient contrast */
+
+a {
+    color: #0066cc;
+    /* Good contrast on white background */
+}
+
+a:hover,
+a:focus {
+    color: #004499;
+    text-decoration: underline;
+}
+
+
+/* Hidden attribute support for dynamic content */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ARIA live region styling */
+
+[role="alert"],
+[aria-live] {
+    position: relative;
+}
+
+
+/* Reduced motion support - WCAG 2.3.3 */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* Improve form field contrast */
+
+input,
+select,
+textarea {
+    border: 2px solid #ccc;
+    background-color: #fff;
+    color: #333;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #007bff;
+    background-color: #fff;
+}
+
+
+/* Disabled state should be clearly visible */
+
+input:disabled,
+select:disabled,
+textarea:disabled,
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+}
+
+
+/* Error state should be clearly visible */
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: #dc3545;
+    border-width: 2px;
+}
+
+
+/* Success state */
+
+input[aria-invalid="false"],
+select[aria-invalid="false"],
+textarea[aria-invalid="false"] {
+    border-color: #28a745;
+}
