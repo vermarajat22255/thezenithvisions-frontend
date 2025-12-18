@@ -46,18 +46,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-94GJXMT7EF`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-94GJXMT7EF');
-          `}
-        </Script>
         {/* GSAP */}
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
@@ -113,12 +101,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning={true}>
-        <a href="#main-content" className="skip-to-main">
-          Skip to main content
-        </a>
         {children}
 
-        {/* Scroll to Top Button */}
+                {/* Scroll to Top Button */}
         <button className="scroll-to-top">
           <svg viewBox="0 0 60 60">
             <circle className="scroll-progress" cx="30" cy="30" r="25"></circle>

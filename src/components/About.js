@@ -27,10 +27,6 @@ export default function About() {
               <div className="stat-number">50%</div>
               <div className="stat-label">Cost Saved</div>
             </div>
-            <a href="#projects" className="about-cta">
-              View Case Studies
-              <span>→</span>
-            </a>
           </div>
           <div className="about-content">
             <h2>
@@ -48,7 +44,7 @@ export default function About() {
             </h2>
             <div className="about-image">
               <img
-                src="data:image/svg+xml,%3Csvg width='800' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='800' height='400' fill='%23B8956A'/%3E%3C/svg%3E"
+                src="https://res.cloudinary.com/dx0nrghqt/image/upload/v1766009815/ABOUT_US_msogo2.jpg"
                 alt="BIM Interior"
               />
             </div>

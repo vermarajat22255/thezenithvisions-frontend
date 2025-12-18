@@ -1,11 +1,24 @@
 "use client";
 
+import Logo from "./Logo";
+
 export default function Footer() {
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <footer>
       <div className="footer-top">
         <div className="footer-brand">
-          <h3>THEZENITHVISIONS</h3>
+          <Logo size="large" className="footer-logo-svg" />
           <p className="footer-address">
             81/2 BHAWANIPUR COLONY, ANNAPURNA ROAD, INDORE, INDIA
           </p>
@@ -24,16 +37,16 @@ export default function Footer() {
             <h4>Pages</h4>
             <ul>
               <li>
-                <a href="#projects">Projects</a>
+                <a href="#services" onClick={(e) => handleSmoothScroll(e, '#services')}>Services</a>
               </li>
               <li>
-                <a href="#services">Services</a>
+                <a href="#projects" onClick={(e) => handleSmoothScroll(e, '#projects')}>Projects</a>
               </li>
               <li>
-                <a href="#">Culture</a>
+                <a href="#trust" onClick={(e) => handleSmoothScroll(e, '#trust')}>Why&nbsp;Choose&nbsp;Us</a>
               </li>
               <li>
-                <a href="#">Article</a>
+                <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Contact</a>
               </li>
             </ul>
           </div>
@@ -65,7 +78,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <p className="footer-copyright">© 2025 All rights reserved</p>
         <div className="footer-links-bottom">
-          <a href="#home">Home</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</a>
           <span>|</span>
           <a href="#privacy">Privacy Policy</a>
           <span>|</span>

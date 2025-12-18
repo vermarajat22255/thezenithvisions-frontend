@@ -5,8 +5,8 @@ export default function WhyChooseUs() {
     <section id="trust" className="trust">
       <div className="trust-hero-header">
         <div className="trust-centered-container">
-          <div className="trust-tag-center">Building Relationships</div>
-          <h2 className="trust-main-title">TRUST</h2>
+          <div className="trust-tag-center">TRUST</div>
+          <h2 className="trust-main-title">WHY CHOOSE US</h2>
           <p className="trust-main-description">
             At Zenith Visions, we combine precision, innovation, and experience
             to deliver accurate and dependable BIM solutions. Our focus is on
@@ -76,37 +76,37 @@ export default function WhyChooseUs() {
           </div>
 
           <div className="trust-benefits">
-            <div className="benefit-item">
+            <div className="trust-benefit-item">
               <p>
                 Cost-effective, accurate BIM models from sketches, scans, and
                 PDFs using Revit and ArchiCAD.
               </p>
             </div>
-            <div className="benefit-item">
+            <div className="trust-benefit-item">
               <p>
                 Expert team delivering parametric Revit families across all
                 major disciplines.
               </p>
             </div>
-            <div className="benefit-item">
+            <div className="trust-benefit-item">
               <p>
                 Fast turnaround with precise structural modeling and shop
                 drawings in Revit, ArchiCAD, and AutoCAD.
               </p>
             </div>
-            <div className="benefit-item">
+            <div className="trust-benefit-item">
               <p>
                 Seamless conversion from CAD, PDF, or sketches to BIM with
                 accurate quantity take-offs.
               </p>
             </div>
-            <div className="benefit-item">
+            <div className="trust-benefit-item">
               <p>
                 Advanced 3D modeling, Revit families, and MEP-FP coordination
                 with complete documentation.
               </p>
             </div>
-            <div className="benefit-item">
+            <div className="trust-benefit-item">
               <p>
                 High-detail Scan to BIM (up to LOD 500) with as-built models and
                 full construction documentation.

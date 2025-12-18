@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Logo from './Logo'
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -31,7 +32,9 @@ export default function Navbar() {
     <>
       <nav id="navbar">
         <div className="nav-container">
-          <a href="#" className="logo">THEZENITHVISIONS</a>
+          <a href="#" className="logo">
+            <Logo size="small" />
+          </a>
           <div className="nav-right">
             <ul className="nav-links">
               <li><a href="#about">About</a></li>
