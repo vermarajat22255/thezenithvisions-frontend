@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./project-loading.css";
 import Script from "next/script";
 
 export const metadata = {
@@ -103,7 +104,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning={true}>
         {children}
 
-                {/* Scroll to Top Button */}
+        {/* Scroll to Top Button */}
         <button className="scroll-to-top">
           <svg viewBox="0 0 60 60">
             <circle className="scroll-progress" cx="30" cy="30" r="25"></circle>
