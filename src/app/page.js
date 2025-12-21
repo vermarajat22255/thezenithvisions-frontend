@@ -14,7 +14,7 @@ import Contact from "@/components/Contact";
 import SoftwareLogos from "@/components/SoftwareLogos";
 import Footer from "@/components/Footer";
 import ClientScripts from "@/components/ClientScripts";
-import MeetTheTeam from "@/components/MeettheTeam";
+import MeetTheTeam from "@/components/MeetTheTeam";
 
 export default function Home() {
   return (
