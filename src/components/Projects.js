@@ -2,25 +2,15 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Navigation,
-  Pagination,
-  Autoplay,
-  EffectCoverflow,
-} from "swiper/modules";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/effect-coverflow";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 12; // Show 12 projects per page
 
   const categories = [
     "All",
@@ -35,19 +25,14 @@ export default function Projects() {
     "3D Modeling",
   ];
 
-  // Fetch projects from API
+  // Fetch all projects once
   useEffect(() => {
     async function fetchProjects() {
       try {
         setLoading(true);
-        const url =
-          activeCategory === "All"
-            ? `${process.env.NEXT_PUBLIC_API_URL}/projects`
-            : `${
-                process.env.NEXT_PUBLIC_API_URL
-              }/projects?category=${encodeURIComponent(activeCategory)}`;
-
-        const response = await fetch(url);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/projects`
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch projects");
@@ -55,22 +40,69 @@ export default function Projects() {
 
         const data = await response.json();
         setProjects(data.projects || []);
+        setFilteredProjects(data.projects || []);
         setError(null);
       } catch (err) {
         console.error("Error fetching projects:", err);
         setError("Unable to load projects. Please try again later.");
         setProjects([]);
+        setFilteredProjects([]);
       } finally {
         setLoading(false);
       }
     }
 
     fetchProjects();
-  }, [activeCategory]);
+  }, []);
 
-  // Filter button click handler
+  // Filter projects when category changes
+  useEffect(() => {
+    if (activeCategory === "All") {
+      setFilteredProjects(projects);
+    } else {
+      const filtered = projects.filter(
+        (project) => project.category === activeCategory
+      );
+      setFilteredProjects(filtered);
+    }
+    setCurrentPage(1); // Reset to first page when filtering
+  }, [activeCategory, projects]);
+
+  // Calculate pagination
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = filteredProjects.slice(
+    indexOfFirstProject,
+    indexOfLastProject
+  );
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+
+  // Handle category change
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
+  };
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // Scroll to top of projects section
+    document
+      .getElementById("projects")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  // Handle next page
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      handlePageChange(currentPage + 1);
+    }
+  };
+
+  // Handle previous page
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      handlePageChange(currentPage - 1);
+    }
   };
 
   return (
@@ -81,7 +113,7 @@ export default function Projects() {
           <h2 className="section-title">Our Projects</h2>
           <p className="section-subtitle">
             Explore our portfolio of successful BIM projects across various
-            industries
+            industries and specializations
           </p>
         </div>
 
@@ -102,6 +134,22 @@ export default function Projects() {
           </div>
         </div>
 
+        {/* Results Count */}
+        {!loading && !error && filteredProjects.length > 0 && (
+          <div className="projects-count-top">
+            <p>
+              Showing{" "}
+              <strong>
+                {indexOfFirstProject + 1}-
+                {Math.min(indexOfLastProject, filteredProjects.length)}
+              </strong>{" "}
+              of <strong>{filteredProjects.length}</strong> project
+              {filteredProjects.length !== 1 ? "s" : ""}
+              {activeCategory !== "All" && ` in ${activeCategory}`}
+            </p>
+          </div>
+        )}
+
         {/* Loading State */}
         {loading && (
           <div className="projects-loading">
@@ -116,7 +164,7 @@ export default function Projects() {
             <p>{error}</p>
             <button
               className="retry-btn"
-              onClick={() => setActiveCategory(activeCategory)}
+              onClick={() => window.location.reload()}
             >
               Try Again
             </button>
@@ -124,120 +172,134 @@ export default function Projects() {
         )}
 
         {/* Empty State */}
-        {!loading && !error && projects.length === 0 && (
+        {!loading && !error && filteredProjects.length === 0 && (
           <div className="projects-empty">
             <p>No projects found in this category.</p>
           </div>
         )}
 
-        {/* Swiper Carousel */}
-        {!loading && !error && projects.length > 0 && (
-          <div className="projects-carousel">
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
-              effect="coverflow"
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView="auto"
-              coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-              }}
-              pagination={{
-                clickable: true,
-                dynamicBullets: true,
-              }}
-              navigation={true}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-              }}
-              loop={projects.length > 3}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                  coverflowEffect: {
-                    rotate: 30,
-                    depth: 80,
-                  },
-                },
-                640: {
-                  slidesPerView: 2,
-                  spaceBetween: 30,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 40,
-                },
-                1440: {
-                  slidesPerView: 3,
-                  spaceBetween: 50,
-                },
-              }}
-              className="projects-swiper"
-            >
-              {projects.map((project) => (
-                <SwiperSlide key={project.id}>
-                  <div className="project-card">
-                    {/* Project Image */}
-                    <div className="project-image">
-                      <Image
-                        src={project.imageUrl}
-                        alt={project.title}
-                        width={800}
-                        height={600}
-                        className="project-img"
-                        placeholder="blur"
-                        blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg=="
-                      />
+        {/* Projects Grid */}
+        {!loading && !error && currentProjects.length > 0 && (
+          <>
+            <div className="projects-grid">
+              {currentProjects.map((project, index) => (
+                <div key={project.id} className="project-card">
+                  {/* Project Image */}
+                  <div className="project-image">
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      width={600}
+                      height={400}
+                      className="project-img"
+                      loading={index < 6 ? "eager" : "lazy"} // Load first 6 immediately, rest lazy
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg=="
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+
+                  {/* Project Content */}
+                  <div className="project-content">
+                    {/* Tags */}
+                    <div className="project-tags">
+                      {project.tags &&
+                        project.tags.slice(0, 3).map((tag, idx) => (
+                          <span key={idx} className="project-tag">
+                            {tag}
+                          </span>
+                        ))}
                     </div>
 
-                    {/* Project Content */}
-                    <div className="project-content">
-                      {/* Tags */}
-                      <div className="project-tags">
-                        {project.tags &&
-                          project.tags.map((tag, index) => (
-                            <span key={index} className="project-tag">
-                              {tag}
-                            </span>
-                          ))}
-                      </div>
+                    {/* Title */}
+                    <h3 className="project-title">{project.title}</h3>
 
-                      {/* Title */}
-                      <h3 className="project-title">{project.title}</h3>
+                    {/* Description */}
+                    <p className="project-description">{project.description}</p>
 
-                      {/* Description */}
-                      <p className="project-description">
-                        {project.description}
-                      </p>
-
-                      {/* Category Badge */}
-                      <div className="project-category">
-                        <span className="category-badge">
-                          {project.category}
-                        </span>
-                      </div>
+                    {/* Category Badge */}
+                    <div className="project-footer">
+                      <span className="category-badge">{project.category}</span>
                     </div>
                   </div>
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
-
-            {/* Project Count */}
-            <div className="projects-count">
-              <p>
-                Showing <strong>{projects.length}</strong> project
-                {projects.length !== 1 ? "s" : ""}
-                {activeCategory !== "All" && ` in ${activeCategory}`}
-              </p>
             </div>
-          </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="pagination">
+                <button
+                  className="pagination-btn prev"
+                  onClick={handlePrevPage}
+                  disabled={currentPage === 1}
+                >
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M12.5 15L7.5 10L12.5 5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Previous
+                </button>
+
+                <div className="pagination-numbers">
+                  {[...Array(totalPages)].map((_, index) => {
+                    const pageNumber = index + 1;
+                    // Show first page, last page, current page, and pages around current
+                    if (
+                      pageNumber === 1 ||
+                      pageNumber === totalPages ||
+                      (pageNumber >= currentPage - 1 &&
+                        pageNumber <= currentPage + 1)
+                    ) {
+                      return (
+                        <button
+                          key={pageNumber}
+                          className={`pagination-number ${
+                            currentPage === pageNumber ? "active" : ""
+                          }`}
+                          onClick={() => handlePageChange(pageNumber)}
+                        >
+                          {pageNumber}
+                        </button>
+                      );
+                    } else if (
+                      pageNumber === currentPage - 2 ||
+                      pageNumber === currentPage + 2
+                    ) {
+                      return (
+                        <span key={pageNumber} className="pagination-dots">
+                          ...
+                        </span>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+
+                <button
+                  className="pagination-btn next"
+                  onClick={handleNextPage}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M7.5 15L12.5 10L7.5 5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </section>
