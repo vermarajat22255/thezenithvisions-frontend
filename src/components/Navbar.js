@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import Logo from './Logo'
 
 export default function Navbar() {
@@ -32,15 +33,16 @@ export default function Navbar() {
     <>
       <nav id="navbar">
         <div className="nav-container">
-          <a href="#" className="logo">
+          <Link href="/" className="logo">
             <Logo size="small" />
-          </a>
+          </Link>
           <div className="nav-right">
             <ul className="nav-links">
-              <li><a href="#about">About</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><Link href="/about">About</Link></li>
+              <li><Link href="/services">Services</Link></li>
+              <li><Link href="/projects">Projects</Link></li>
+              <li><Link href="/blogs">Blogs</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
             </ul>
             <button className="theme-toggle" onClick={toggleTheme}>
               <span id="theme-icon">{theme === 'light' ? '🌙' : '☀️'}</span>
@@ -59,10 +61,11 @@ export default function Navbar() {
       
       {/* Mobile Navigation */}
       <div className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`} id="mobileNav">
-        <a href="#about" onClick={closeMobileMenu}>About</a>
-        <a href="#services" onClick={closeMobileMenu}>Services</a>
-        <a href="#projects" onClick={closeMobileMenu}>Projects</a>
-        <a href="#contact" onClick={closeMobileMenu}>Contact</a>
+        <Link href="/about" onClick={closeMobileMenu}>About</Link>
+        <Link href="/services" onClick={closeMobileMenu}>Services</Link>
+        <Link href="/projects" onClick={closeMobileMenu}>Projects</Link>
+        <Link href="/blogs" onClick={closeMobileMenu}>Blogs</Link>
+        <Link href="/contact" onClick={closeMobileMenu}>Contact</Link>
       </div>
     </>
   )

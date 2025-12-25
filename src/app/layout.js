@@ -1,5 +1,5 @@
 import "./globals.css";
-import "./project-loading.css";
+import "./pages.css";
 import Script from "next/script";
 
 export const metadata = {

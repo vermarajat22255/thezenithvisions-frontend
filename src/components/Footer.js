@@ -1,19 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import Logo from "./Logo";
 
 export default function Footer() {
-  const handleSmoothScroll = (e, targetId) => {
-    e.preventDefault();
-    const element = document.querySelector(targetId);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
-
   return (
     <footer>
       <div className="footer-top">
@@ -37,16 +27,19 @@ export default function Footer() {
             <h4>Pages</h4>
             <ul>
               <li>
-                <a href="#services" onClick={(e) => handleSmoothScroll(e, '#services')}>Services</a>
+                <Link href="/about">About Us</Link>
               </li>
               <li>
-                <a href="#projects" onClick={(e) => handleSmoothScroll(e, '#projects')}>Projects</a>
+                <Link href="/services">Services</Link>
               </li>
               <li>
-                <a href="#trust" onClick={(e) => handleSmoothScroll(e, '#trust')}>Why&nbsp;Choose&nbsp;Us</a>
+                <Link href="/projects">Projects</Link>
               </li>
               <li>
-                <a href="#contact" onClick={(e) => handleSmoothScroll(e, '#contact')}>Contact</a>
+                <Link href="/blogs">Blogs</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact</Link>
               </li>
             </ul>
           </div>
@@ -78,7 +71,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <p className="footer-copyright">© 2025 All rights reserved</p>
         <div className="footer-links-bottom">
-          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</a>
+          <Link href="/">Home</Link>
           <span>|</span>
           <a href="#privacy">Privacy Policy</a>
           <span>|</span>
