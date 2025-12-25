@@ -2,52 +2,55 @@
 
 export default function About() {
   return (
-    <section id="about" className="about-us">
-      <div className="about-container">
-        <div className="about-box">
-          <div className="about-stats">
-            <div className="about-tag">About us</div>
+    <section id="about" className="about-section">
+      <div className="about-wrapper">
+        {/* Left: Stats */}
+        <div className="about-stats">
+          <p className="about-tag">About Us</p>
+
+          <div className="stats-grid">
             <div className="stat-item">
-              <div className="stat-number">95%</div>
-              <div className="stat-label">Model Accuracy</div>
+              <h3>95%</h3>
+              <p>Model Accuracy</p>
             </div>
             <div className="stat-item">
-              <div className="stat-number">96%</div>
-              <div className="stat-label">Client Retention</div>
+              <h3>96%</h3>
+              <p>Client Retention</p>
             </div>
             <div className="stat-item">
-              <div className="stat-number">1500+</div>
-              <div className="stat-label">Projects Delivered</div>
+              <h3>1500+</h3>
+              <p>Projects Delivered</p>
             </div>
             <div className="stat-item">
-              <div className="stat-number">200+</div>
-              <div className="stat-label">Clients Served</div>
+              <h3>200+</h3>
+              <p>Clients Served</p>
             </div>
             <div className="stat-item">
-              <div className="stat-number">50%</div>
-              <div className="stat-label">Cost Saved</div>
+              <h3>50%</h3>
+              <p>Cost Saved</p>
             </div>
           </div>
-          <div className="about-content">
-            <h2>
-              Our outsourcing services empower businesses to{" "}
-              <strong>
-                &ldquo;innovate faster, scale smarter, and operate leaner&rdquo;
-              </strong>
-              . We focus on ensuring{" "}
-              <strong>
-                &ldquo;maximum efficiency, reducing costs, and driving
-                guaranteed success in today&apos;s fast-evolving global
-                marketplace&rdquo;
-              </strong>
-              .
-            </h2>
-            <div className="about-image">
-              <img
-                src="https://res.cloudinary.com/dx0nrghqt/image/upload/v1766009815/ABOUT_US_msogo2.jpg"
-                alt="BIM Interior"
-              />
-            </div>
+        </div>
+
+        {/* Right: Content */}
+        <div className="about-content">
+          <h2>
+            Our outsourcing services empower businesses to{" "}
+            <span>innovate faster, scale smarter, and operate leaner</span>.
+          </h2>
+
+          <p>
+            We focus on ensuring <strong>maximum efficiency</strong>, reducing
+            costs, and driving <strong>guaranteed success</strong> in today’s
+            fast-evolving global marketplace.
+          </p>
+
+          <div className="about-image">
+            <img
+              src="https://res.cloudinary.com/dx0nrghqt/image/upload/v1766009815/ABOUT_US_msogo2.jpg"
+              alt="Modern workspace"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
