@@ -32,7 +32,6 @@ export default function Home() {
       <BenefitsStrip />
       <Testimonials />
       <Contact />
-      <MeetTheTeam />
       <SoftwareLogos />
       <Footer />
       <ClientScripts />

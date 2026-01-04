@@ -9,7 +9,7 @@ export default function BenefitsStrip() {
     "DEDICATED BIM TEAMS",
     "MULTI-LEVEL QC BEFORE DELIVERY",
     "LONG-TERM BIM PARTNER",
-    "UP TO 60% COST SAVINGS"
+    "UP TO 60% COST SAVINGS",
   ];
 
   return (
@@ -17,7 +17,6 @@ export default function BenefitsStrip() {
       <div className="benefits-strip-track">
         {benefits.map((benefit, index) => (
           <span key={index}>
-            <span className="benefit-dot">●</span>
             <span className="benefit-item">{benefit}</span>
           </span>
         ))}
