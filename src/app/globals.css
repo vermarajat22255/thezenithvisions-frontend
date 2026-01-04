@@ -5785,11 +5785,29 @@ video,
     border-color: rgba(255, 255, 255, 0.2);
 }
 
+.testimonial-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 15px;
+}
+
+.testimonial-stars .star {
+    color: #ffd700;
+    font-size: 1.1rem;
+}
+
+.testimonial-stars .star.half {
+    background: linear-gradient(90deg, #ffd700 50%, rgba(255, 255, 255, 0.3) 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .testimonial-text {
     font-size: 0.95rem;
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .testimonial-author {
