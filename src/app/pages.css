@@ -1672,6 +1672,56 @@
     transition: all 0.3s ease;
 }
 
+
+/* TAG CONTAINER */
+
+.blog-tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    background: #FFFFFF;
+    border: 2px solid #E0E0E0;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 10px;
+    /* space BETWEEN tags */
+    margin: 6px 6px 6px 0;
+}
+
+
+/* INDIVIDUAL TAG */
+
+.blog-tags span {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+
+/* REMOVE BULLET YOU ADDED */
+
+.blog-tags span::before {
+    content: none;
+}
+
+
+/* HOVER EFFECT */
+
+.blog-tags span:hover {
+    background: #000000;
+    color: #fff;
+    border-color: #000000;
+    cursor: pointer;
+}
+
 .blog-category-btn:hover {
     border-color: #000000;
 }
