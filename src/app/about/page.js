@@ -68,69 +68,101 @@ export default function AboutPage() {
   const leadershipTeam = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      role: "CEO & Founder",
+      name: "Abhijeet Verma",
+      role: "Founder & CEO",
       image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853849/ABHIJEET_qpubex.jpg",
+      linkedin: "https://www.linkedin.com/in/abhijeet-verma/",
     },
     {
       id: 2,
-      name: "Michael Chen",
-      role: "Chief Technology Officer",
+      name: "Gaurav Kasera",
+      role: "Co-Founder",
       image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853857/WhatsApp_Image_2026-03-18_at_8.31.56_PM_zqgxli.jpg",
+      linkedin: "https://www.linkedin.com/in/gaurav-kasera/",
     },
     {
       id: 3,
-      name: "Emily Rodriguez",
-      role: "Head of Operations",
+      name: "Janhvi Dudhat",
+      role: "Co-Founder",
       image:
-        "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853847/WhatsApp_Image_2026-03-18_at_8.30.36_PM_hmbxvy.jpg",
+      linkedin: "https://www.linkedin.com/in/janhvi-dudhat/",
+    },
+    {
+      id: 4,
+      name: "Abhishek Verma",
+      role: "Business Development Associate",
+      image:
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773855634/PIKKU_pwddpa.jpg",
+      linkedin: "https://www.linkedin.com/in/abhishek-varma/",
+    },
+    {
+      id: 5,
+      name: "Archana Vairagi",
+      role: "Business Development",
+      image:
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853875/Gemini_Generated_Image_wt90nzwt90nzwt90_qxiyx6.png",
+      linkedin: "https://www.linkedin.com/in/archana-vairagi/",
+      imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
   ];
 
   const bimTeam = [
     {
       id: 1,
-      name: "David Williams",
-      role: "Senior BIM Manager",
+      name: "Vishnu Chouhan",
+      role: "BIM Manager",
       image:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853863/WhatsApp_Image_2026-03-18_at_9.26.41_PM_immdjq.jpg",
+      linkedin: "https://www.linkedin.com/in/vishnu-chouhan/",
+      imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
       id: 2,
-      name: "Jennifer Lee",
-      role: "Lead Architect",
+      name: "Sheetal Dawar",
+      role: "Senior BIM Engineer",
       image:
-        "https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?w=400&h=400&fit=crop",
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853868/SHEETAL_DAWAR_nexfgh.png",
+      linkedin: "https://www.linkedin.com/in/sheetal-dawer/",
+      imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
       id: 3,
-      name: "Robert Taylor",
-      role: "Structural Engineer",
+      name: "Bharat Mahajan",
+      role: "BIM Engineer",
       image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853871/BHARAT_MAHAJAN_vsccuk.png",
+      linkedin: "https://www.linkedin.com/in/bharat-mahajan/",
+      imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
       id: 4,
-      name: "Amanda Foster",
-      role: "MEP Coordinator",
+      name: "Aarti Panchal",
+      role: "BIM Engineer",
       image:
-        "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop",
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853876/AARTI_PANCHAL_mlne9h.png",
+      linkedin: "https://www.linkedin.com/in/aarti-panchal/",
+      imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
       id: 5,
-      name: "James Wilson",
-      role: "3D Visualization Specialist",
+      name: "Devansh Kasera",
+      role: "BIM Architect",
       image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853880/WhatsApp_Image_2026-03-18_at_9.16.21_PM_pl5nfw.jpg",
+      linkedin: "https://www.linkedin.com/in/devansh-kasera/",
+      imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
       id: 6,
-      name: "Lisa Martinez",
-      role: "CAD Drafter",
+      name: "Parth Kasera",
+      role: "BIM Architect",
       image:
-        "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop",
+        "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853881/WhatsApp_Image_2026-03-18_at_9.19.14_PM_hnpru9.jpg",
+      linkedin: "https://www.linkedin.com/in/parth-kasera/",
+      imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
   ];
 
@@ -310,11 +342,35 @@ export default function AboutPage() {
             {leadershipTeam.map((member) => (
               <div key={member.id} className="team-member-card">
                 <div className="team-member-image">
-                  <img src={member.image} alt={member.name} />
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    style={member.imageStyle || {}}
+                  />
                 </div>
                 <div className="team-member-info">
                   <h4>{member.name}</h4>
                   <p>{member.role}</p>
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="team-linkedin-btn"
+                      aria-label={`${member.name} on LinkedIn`}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        width="14"
+                        height="14"
+                      >
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                      LinkedIn
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
@@ -334,11 +390,35 @@ export default function AboutPage() {
             {bimTeam.map((member) => (
               <div key={member.id} className="team-member-card">
                 <div className="team-member-image">
-                  <img src={member.image} alt={member.name} />
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    style={member.imageStyle || {}}
+                  />
                 </div>
                 <div className="team-member-info">
                   <h4>{member.name}</h4>
                   <p>{member.role}</p>
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="team-linkedin-btn"
+                      aria-label={`${member.name} on LinkedIn`}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        width="14"
+                        height="14"
+                      >
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                      LinkedIn
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

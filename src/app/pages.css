@@ -5083,6 +5083,33 @@
     opacity: 0.85;
 }
 
+/* Team LinkedIn Button */
+.team-linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    padding: 0.35rem 0.75rem;
+    background: #0A66C2;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+    line-height: 1;
+}
+
+.team-linkedin-btn:hover {
+    background: #004182;
+    transform: translateY(-1px);
+}
+
+.team-linkedin-btn svg {
+    flex-shrink: 0;
+}
+
 .legal-subsection {
     margin-top: 1.5rem;
 }
