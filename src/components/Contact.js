@@ -200,7 +200,7 @@ export default function Contact() {
             <h3>Follow Us</h3>
             <div className="social-links">
               <a
-                href="https://www.linkedin.com/company/thezenithvisions"
+                href="https://www.linkedin.com/company/the-zenith-visions"
                 target="_blank"
                 rel="noopener noreferrer"
               >

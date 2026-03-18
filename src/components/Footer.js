@@ -10,7 +10,8 @@ export default function Footer() {
         <div className="footer-brand">
           <Logo size="large" className="footer-logo-svg" />
           <p className="footer-address">
-            81/2 BHAWANIPUR COLONY, ANNAPURNA ROAD, INDORE, INDIA
+            USA: 1305 Paterson Plank Rd, North Bergen, NJ, USA INDIA: 81/2
+            Bhawanipur Colony, Indore, INDIA
           </p>
           <p className="footer-tagline">
             Email:{" "}
@@ -19,7 +20,7 @@ export default function Footer() {
             </a>
           </p>
           <p className="footer-tagline">
-            INDIA: +91 8770093683 | USA: +1 551 347 6950
+            USA: +1 551 347 6950 | INDIA: +91 8770093683
           </p>
         </div>
         <div className="footer-columns">
@@ -47,13 +48,15 @@ export default function Footer() {
             <h4>Legal</h4>
             <ul>
               <li>
-                <a href="#">Terms & Conditions.</a>
+                <Link href="/legal/terms-and-conditions">
+                  Terms &amp; Conditions
+                </Link>
               </li>
               <li>
-                <a href="#">Privacy Policy.</a>
+                <Link href="/legal/privacy-policy">Privacy Policy</Link>
               </li>
               <li>
-                <a href="#">Refund Policy.</a>
+                <Link href="/legal/refund-policy">Refund Policy</Link>
               </li>
             </ul>
           </div>
@@ -73,9 +76,9 @@ export default function Footer() {
         <div className="footer-links-bottom">
           <Link href="/">Home</Link>
           <span>|</span>
-          <a href="#privacy">Privacy Policy</a>
+          <Link href="/legal/privacy-policy">Privacy Policy</Link>
           <span>|</span>
-          <a href="#terms">Terms & Conditions</a>
+          <Link href="/legal/terms-and-conditions">Terms &amp; Conditions</Link>
         </div>
       </div>
     </footer>
