@@ -72,7 +72,7 @@ export default function AboutPage() {
       role: "Founder & CEO",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853849/ABHIJEET_qpubex.jpg",
-      linkedin: "https://www.linkedin.com/in/abhijeet-verma/",
+      linkedin: "https://www.linkedin.com/in/abhijeetverma684",
     },
     {
       id: 2,
@@ -80,7 +80,7 @@ export default function AboutPage() {
       role: "Co-Founder",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853857/WhatsApp_Image_2026-03-18_at_8.31.56_PM_zqgxli.jpg",
-      linkedin: "https://www.linkedin.com/in/gaurav-kasera/",
+      linkedin: "https://www.linkedin.com/in/gaurav-kasera-1ab5891b0/",
     },
     {
       id: 3,
@@ -88,7 +88,7 @@ export default function AboutPage() {
       role: "Co-Founder",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853847/WhatsApp_Image_2026-03-18_at_8.30.36_PM_hmbxvy.jpg",
-      linkedin: "https://www.linkedin.com/in/janhvi-dudhat/",
+      linkedin: "https://www.linkedin.com/in/janhvi-dudhat-7139101a0/",
     },
     {
       id: 4,
@@ -96,7 +96,7 @@ export default function AboutPage() {
       role: "Business Development Associate",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773855634/PIKKU_pwddpa.jpg",
-      linkedin: "https://www.linkedin.com/in/abhishek-varma/",
+      linkedin: "https://www.linkedin.com/in/abhishekvarma10/",
     },
     {
       id: 5,
@@ -104,7 +104,7 @@ export default function AboutPage() {
       role: "Business Development",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853875/Gemini_Generated_Image_wt90nzwt90nzwt90_qxiyx6.png",
-      linkedin: "https://www.linkedin.com/in/archana-vairagi/",
+      linkedin: "https://www.linkedin.com/in/archana-vairagi-a18ab71b1/",
       imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
   ];
@@ -116,7 +116,7 @@ export default function AboutPage() {
       role: "BIM Manager",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853863/WhatsApp_Image_2026-03-18_at_9.26.41_PM_immdjq.jpg",
-      linkedin: "https://www.linkedin.com/in/vishnu-chouhan/",
+      linkedin: "https://www.linkedin.com/in/vishnu-chouhan-25a082333/",
       imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
@@ -125,7 +125,7 @@ export default function AboutPage() {
       role: "Senior BIM Engineer",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853868/SHEETAL_DAWAR_nexfgh.png",
-      linkedin: "https://www.linkedin.com/in/sheetal-dawer/",
+      linkedin: "https://www.linkedin.com/in/sheetal-dawer-366434224/",
       imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
@@ -134,7 +134,7 @@ export default function AboutPage() {
       role: "BIM Engineer",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853871/BHARAT_MAHAJAN_vsccuk.png",
-      linkedin: "https://www.linkedin.com/in/bharat-mahajan/",
+      linkedin: "https://www.linkedin.com/in/bharat-mahajan-64b38622a/",
       imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
@@ -143,7 +143,7 @@ export default function AboutPage() {
       role: "BIM Engineer",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853876/AARTI_PANCHAL_mlne9h.png",
-      linkedin: "https://www.linkedin.com/in/aarti-panchal/",
+      linkedin: "https://www.linkedin.com/in/aarti-panchal-061b74342/",
       imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
@@ -152,7 +152,7 @@ export default function AboutPage() {
       role: "BIM Architect",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853880/WhatsApp_Image_2026-03-18_at_9.16.21_PM_pl5nfw.jpg",
-      linkedin: "https://www.linkedin.com/in/devansh-kasera/",
+      linkedin: "https://www.linkedin.com/in/devansh-kasera-313683342/",
       imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
     {
@@ -161,7 +161,7 @@ export default function AboutPage() {
       role: "BIM Architect",
       image:
         "https://res.cloudinary.com/dx0nrghqt/image/upload/v1773853881/WhatsApp_Image_2026-03-18_at_9.19.14_PM_hnpru9.jpg",
-      linkedin: "https://www.linkedin.com/in/parth-kasera/",
+      linkedin: "https://www.linkedin.com/in/parth-kasera-274848367/",
       imageStyle: { objectFit: "contain", background: "#f4f4f4" },
     },
   ];
